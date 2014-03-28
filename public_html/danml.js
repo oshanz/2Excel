@@ -15,7 +15,7 @@ function ExportExcel(table, strFileName) {
         var D = document, a = D.createElement("a");
         if ('dowsnload' in a) { //html5 A[download]
             a.href = strMimeType + ',' + strData;
-            a.setAttribute("download", strFileName);
+            a.setAttribute("download", strFileName + '.xlsx');
             a.innerHTML = "downloading...";
             D.body.appendChild(a);
             setTimeout(function() {
