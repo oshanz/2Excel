@@ -3,15 +3,18 @@
  * and open the template in the editor.
  */
 
-function ExportExcel(table) {
-    if (!table.nodeType) {
-        var strData = document.getElementById(table).outerHTML;
-        var strFileName = "ftable.xls";
-        var D = document, a = D.createElement("a");
-        var strMimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+//MimeTypes
+//MS OFFICE 2003  : data:application/vnd.ms-excel
+//MS OFFICE 2007  : application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
+function ExportExcel(table, strFileName) {
+    if (!table.nodeType) {
+        var strData = encodeURIComponent(document.getElementById(table).outerHTML);
+        var strMimeType = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+
+        var D = document, a = D.createElement("a");
         if ('download' in a) { //html5 A[download]
-            a.href = "data:" + strMimeType + "," + encodeURIComponent(strData);
+            a.href = strMimeType + ',' + strData;
             a.setAttribute("download", strFileName);
             a.innerHTML = "downloading...";
             D.body.appendChild(a);
@@ -19,11 +22,10 @@ function ExportExcel(table) {
                 a.click();
                 D.body.removeChild(a);
             }, 66);
-            return true;
-        } else {
-            alert('Week HTML5 support');
-            return false;
+        } else {//'Week HTML5 support'
+            window.open('strMimeType,' + strData);
         }
+        return true;
     } else {
         alert('Not a table');
         return false;
