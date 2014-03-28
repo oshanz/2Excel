@@ -12,12 +12,12 @@ function ExportExcel(table, strFileName) {
         var strData = encodeURIComponent(document.getElementById(table).outerHTML);
         var strMimeType = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
-        a = document.createElement("a");
+        a = document.createElement('a');
         a.href = strMimeType + ',' + strData;
         if ('download' in a) { //html5 A[download]
-            a.setAttribute("download", strFileName + '.xlsx');
+            a.setAttribute('download', strFileName + '.xlsx');
         }
-        a.innerHTML = "Processing...";
+        a.innerHTML = 'Processing...';
         document.body.appendChild(a);
         setTimeout(function() {
             a.click();
