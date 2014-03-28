@@ -3,11 +3,6 @@
  * and open the template in the editor.
  */
 
-
-function download(strData, strFileName) {
-
-}
-
 function ExportExcel(table) {
     if (!table.nodeType) {
         var strData = document.getElementById(table).outerHTML;
@@ -25,12 +20,10 @@ function ExportExcel(table) {
                 D.body.removeChild(a);
             }, 66);
             return true;
-        } /* end if('download' in a) */
-
-        setTimeout(function() {
-            D.body.removeChild(f);
-        }, 333);
-        return true;
+        } else {
+            alert('Week HTML5 support');
+            return false;
+        }
     } else {
         alert('Not a table');
         return false;
