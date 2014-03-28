@@ -1,6 +1,6 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Waruna Oshan Wisumperuma
+ * @contact warunaoshan@gmail.com
  */
 
 //MimeTypes
@@ -17,7 +17,7 @@ function ExportExcel(table, strFileName) {
         if ('download' in a) { //html5 A[download]
             a.setAttribute("download", strFileName + '.xlsx');
         }
-        a.innerHTML = "downloading...";
+        a.innerHTML = "Processing...";
         document.body.appendChild(a);
         setTimeout(function() {
             a.click();
