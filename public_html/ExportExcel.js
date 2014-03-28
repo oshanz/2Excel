@@ -11,22 +11,14 @@
  * 
  * @param {String} table id
  * @param {String} strFileName
- * @param {int} animation time in miliseconds
  * @returns {Boolean}
  */
-function ExportExcel(table, strFileName, animation) {
+function ExportExcel(table, strFileName) {
     if (!table.nodeType) {
         var a = document.createElement('a');
         a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById(table).outerHTML);
-        if ('download' in a) { //html5 A[download]
-            a.setAttribute('download', strFileName + '.xlsx');
-        }
-        a.innerHTML = 'Processing...';
-        document.body.appendChild(a);
-        setTimeout(function() {
-            a.click();
-            document.body.removeChild(a);
-        }, animation);
+        a.setAttribute('download', strFileName + '.xlsx');
+        a.click();
         return true;
     } else {
         alert('Not a table');
