@@ -5,7 +5,7 @@
 
 //MimeTypes
 //MS OFFICE 2003  : data:application/vnd.ms-excel
-//MS OFFICE 2007  : application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+//MS OFFICE 2007  : data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 function ExportExcel(table, strFileName) {
     if (!table.nodeType) {
