@@ -13,18 +13,16 @@ function ExportExcel(table, strFileName) {
         var strMimeType = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
         var D = document, a = D.createElement("a");
-        if ('dowsnload' in a) { //html5 A[download]
-            a.href = strMimeType + ',' + strData;
+        a.href = strMimeType + ',' + strData;
+        if ('download' in a) { //html5 A[download]
             a.setAttribute("download", strFileName + '.xlsx');
-            a.innerHTML = "downloading...";
-            D.body.appendChild(a);
-            setTimeout(function() {
-                a.click();
-                D.body.removeChild(a);
-            }, 1000);
-        } else {//'Week HTML5 support'
-            window.open(strMimeType + ',' + strData);
         }
+        a.innerHTML = "downloading...";
+        D.body.appendChild(a);
+        setTimeout(function() {
+            a.click();
+            D.body.removeChild(a);
+        }, 1000);
         return true;
     } else {
         alert('Not a table');
