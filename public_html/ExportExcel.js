@@ -7,6 +7,12 @@
 //MS OFFICE 2003  : data:application/vnd.ms-excel
 //MS OFFICE 2007  : data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
+/**
+ * 
+ * @param {String} table id
+ * @param {String} File Name
+ * @returns {Boolean}
+ */
 function ExportExcel(table, strFileName) {
     if (!table.nodeType) {
         var strData = encodeURIComponent(document.getElementById(table).outerHTML);
