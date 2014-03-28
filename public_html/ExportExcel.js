@@ -16,7 +16,7 @@
  */
 function ExportExcel(table, strFileName, animation) {
     if (!table.nodeType) {
-        a = document.createElement('a');
+        var a = document.createElement('a');
         a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById(table).outerHTML);
         if ('download' in a) { //html5 A[download]
             a.setAttribute('download', strFileName + '.xlsx');
