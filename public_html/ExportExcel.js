@@ -17,7 +17,7 @@ function ExportExcel(table, strFileName) {
     if (!table.nodeType) {
         var a = document.createElement('a');
         a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById(table).outerHTML);
-        a.setAttribute('download', strFileName + '.xlsx');
+        a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
         a.click();
         return true;
     } else {
