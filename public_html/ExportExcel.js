@@ -11,13 +11,13 @@
  * 
  * @param {String} table id
  * @param {String} File Name
+ * @param {int} animation miliseconds
  * @returns {Boolean}
  */
-function ExportExcel(table, strFileName) {
+function ExportExcel(table, strFileName, animation) {
     if (!table.nodeType) {
         var strData = encodeURIComponent(document.getElementById(table).outerHTML);
         var strMimeType = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-
         a = document.createElement('a');
         a.href = strMimeType + ',' + strData;
         if ('download' in a) { //html5 A[download]
@@ -28,7 +28,7 @@ function ExportExcel(table, strFileName) {
         setTimeout(function() {
             a.click();
             document.body.removeChild(a);
-        }, 1000);
+        }, animation);
         return true;
     } else {
         alert('Not a table');
