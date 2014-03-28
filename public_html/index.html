@@ -11,6 +11,40 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <table id="tblId" style="background-color: aqua">
+            <thead>
+                <tr>
+                    <th>
+                        a
+                    </th>
+                    <th>
+                        b
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        4
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="window.open('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById('tblId').outerHTML));">Export</button>
     </body>
 </html>
+<br>
+MS OFFICE 2003  : data:application/vnd.ms-excel
+<br>
+MS OFFICE 2007  : application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
