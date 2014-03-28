@@ -10,8 +10,8 @@
 /**
  * 
  * @param {String} table id
- * @param {String} File Name
- * @param {int} animation miliseconds
+ * @param {String} strFileName
+ * @param {int} animation time in miliseconds
  * @returns {Boolean}
  */
 function ExportExcel(table, strFileName, animation) {
