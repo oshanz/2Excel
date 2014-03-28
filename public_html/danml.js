@@ -13,7 +13,7 @@ function ExportExcel(table, strFileName) {
         var strMimeType = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
         var D = document, a = D.createElement("a");
-        if ('download' in a) { //html5 A[download]
+        if ('dowsnload' in a) { //html5 A[download]
             a.href = strMimeType + ',' + strData;
             a.setAttribute("download", strFileName);
             a.innerHTML = "downloading...";
@@ -21,9 +21,9 @@ function ExportExcel(table, strFileName) {
             setTimeout(function() {
                 a.click();
                 D.body.removeChild(a);
-            }, 66);
+            }, 1000);
         } else {//'Week HTML5 support'
-            window.open('strMimeType,' + strData);
+            window.open(strMimeType + ',' + strData);
         }
         return true;
     } else {
