@@ -27,8 +27,10 @@ function ExportExcel(table, strFileName) {
 }
 
 function getHeaders() {
-    var coloms = [];
+    var columns = ['<div>', '<ol id="selectable">'];
     $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
-        console.log(v.innerHTML.trim());
+        columns.push('<li>' + v.innerHTML.trim() + '</li>')
     });
+    columns.push('</ol>');
+    $.colorbox({html:columns.join('')});
 }

@@ -49,30 +49,5 @@ and open the template in the editor.
             </tbody>
         </table>
         <button onclick="getHeaders()">Export</button>
-
-        <script>
-            $(document).ready(function() {
-                //    $.colorbox({html: "<h1>Welcome</h1>"});
-                $("#click").click(function() {
-                    $('#click').css({"background-color": "#f00", "color": "#fff", "cursor": "inherit"}).text("Open this window again and this message will still be here.");
-                    return false;
-                });
-                $(".inline").colorbox({inline: true, width: "50%"});
-            });
-        </script> 
-        <p><a class='inline' href="#inline_content">Inline HTML</a></p>
-
-        <div style='display:none'>
-            <div id='inline_content' style='padding:10px; background:#fff;'>
-                <p><strong>This content comes from a hidden element on this page.</strong></p>
-                <p>The inline option preserves bound JavaScript events and changes, and it puts the content back where it came from when it is closed.</p>
-                <p><a id="click" href="#" style='padding:5px; background:#ccc;'>Click me, it will be preserved!</a></p>
-
-                <p><strong>If you try to open a new Colorbox while it is already open, it will update itself with the new content.</strong></p>
-                <p>Updating Content Example:<br />
-                    <a class="ajax" href="../content/ajax.html">Click here to load new content</a></p>
-            </div>
-        </div>
     </body>
-
 </html>
