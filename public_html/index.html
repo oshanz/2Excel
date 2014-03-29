@@ -9,12 +9,11 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-        <link rel="stylesheet" href="../lib/colorbox.css" />
+        <link rel="stylesheet" href="../lib/colorbox.css">
+        <!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
         <script src="../lib/jquery.colorbox-min.js"></script>
         <script src="ExportExcel.js"></script>
     </head>
@@ -54,6 +53,10 @@ and open the template in the editor.
         <script>
             $(document).ready(function() {
                 //    $.colorbox({html: "<h1>Welcome</h1>"});
+                $("#click").click(function() {
+                    $('#click').css({"background-color": "#f00", "color": "#fff", "cursor": "inherit"}).text("Open this window again and this message will still be here.");
+                    return false;
+                });
                 $(".inline").colorbox({inline: true, width: "50%"});
             });
         </script> 
