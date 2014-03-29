@@ -10,8 +10,10 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="../lib/colorbox.css" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script src="../lib/jquery.colorbox-min.js"></script>
         <script src="ExportExcel.js"></script>
@@ -49,6 +51,25 @@ and open the template in the editor.
         </table>
         <button onclick="getHeaders()">Export</button>
 
+        <script>
+            $(document).ready(function() {
+                //    $.colorbox({html: "<h1>Welcome</h1>"});
+                $(".inline").colorbox({inline: true, width: "50%"});
+            });
+        </script> 
+        <p><a class='inline' href="#inline_content">Inline HTML</a></p>
 
+        <div style='display:none'>
+            <div id='inline_content' style='padding:10px; background:#fff;'>
+                <p><strong>This content comes from a hidden element on this page.</strong></p>
+                <p>The inline option preserves bound JavaScript events and changes, and it puts the content back where it came from when it is closed.</p>
+                <p><a id="click" href="#" style='padding:5px; background:#ccc;'>Click me, it will be preserved!</a></p>
+
+                <p><strong>If you try to open a new Colorbox while it is already open, it will update itself with the new content.</strong></p>
+                <p>Updating Content Example:<br />
+                    <a class="ajax" href="../content/ajax.html">Click here to load new content</a></p>
+            </div>
+        </div>
     </body>
+
 </html>

@@ -27,6 +27,7 @@ function ExportExcel(table, strFileName) {
 }
 
 function getHeaders() {
+    var coloms = [];
     $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
         console.log(v.innerHTML.trim());
     });
