@@ -25,3 +25,11 @@ function ExportExcel(table, strFileName) {
         return false;
     }
 }
+
+function getHeaders() {
+    var a = document.getElementById('tblId');
+    var b = a.rows[0].cells;
+    $.each(b, function(index, v) {
+        console.log(v.innerHTML.trim());
+    });
+}
