@@ -13,10 +13,9 @@
  * @param {String} strFileName
  */
 function ExportExcel(table_id, strFileName) {
-	var ele = document.getElementById(table_id);
-	if (ele.nodeType === 1) {
+	if ($('#' + table_id).is('table')) {
 		var a = document.createElement('a');
-		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(ele.outerHTML);
+		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById(table_id).outerHTML);
 		a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
 		a.click();
 	} else {
@@ -25,10 +24,9 @@ function ExportExcel(table_id, strFileName) {
 }
 
 function cExport(table_id, strFileName) {
-	var ele = document.getElementById(table_id);
-	if (ele.nodeType === 1) {
+	if ($('#' + table_id).is('table')) {
 		var div_inner = ['<div id="selection_list"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#selection_list input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column Name</th></tr></thead><tbody>'];
-		$.each(ele.rows[0].cells, function(index, v) {
+		$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
 			div_inner.push('<tr>');
 			div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
