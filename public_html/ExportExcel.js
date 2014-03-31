@@ -49,6 +49,7 @@ function cExport(table_id) {
 
 function cExportExcel() {
 	var table_id = 'tblId';
+	var fileName = 'ufhgv';
 	var all = [];
 	$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
 		all.push(index);
@@ -58,13 +59,13 @@ function cExportExcel() {
 		select.push(parseInt(v.value));
 	});
 	var rem = $(all).not(select).get();
-	var htmlData = $('#'+table_id).clone();
+	var htmlData = $('#' + table_id).clone();
 	var l = rem.length;
 	for (var i = 0; i < l; i++) {
 		htmlData.find("tr th:eq(" + (rem[i] - i) + "),tr td:eq(" + (rem[i] - i) + ")").remove().end().html();
 	}
 	var a = document.createElement('a');
 	a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent('<table>' + htmlData.html() + '</table>');
-	a.setAttribute('download', 'strFileName' + '_' + new Date().toLocaleString() + '.xlsx');
+	a.setAttribute('download', fileName + '_' + new Date().toLocaleString() + '.xlsx');
 	a.click();
 }
