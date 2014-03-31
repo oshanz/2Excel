@@ -9,13 +9,21 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="../lib/colorbox.css">
-        <!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <!--<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script src="../lib/jquery.colorbox-min.js"></script>
         <script src="ExportExcel.js"></script>
+
+        <style>
+            #feedback { font-size: 1.4em; }
+            #selectable .ui-selecting { background: #FECA40; }
+            #selectable .ui-selected { background: #F39814; color: white; }
+            #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+            #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+        </style>
     </head>
     <body>
         <table id="tblId" style="background-color: aqua">
@@ -49,5 +57,6 @@ and open the template in the editor.
             </tbody>
         </table>
         <button onclick="getHeaders()">Export</button>
+        <a class='inline' href="#strFileName">xda</a>
     </body>
 </html>
