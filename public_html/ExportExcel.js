@@ -13,9 +13,10 @@
  * @param {String} strFileName
  */
 function ExportExcel(table_id, strFileName) {
-	if ($('#' + table_id).is('table')) {
+	var ele = document.getElementById(table_id);
+	if (ele.nodeName == "TABLE") {
 		var a = document.createElement('a');
-		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById(table_id).outerHTML);
+		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(ele.outerHTML);
 		a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
 		a.click();
 	} else {
@@ -23,16 +24,22 @@ function ExportExcel(table_id, strFileName) {
 	}
 }
 
+/**
+ *
+ * @param {String} table_id
+ * @param {String} strFileName
+ */
 function cExport(table_id, strFileName) {
-	if ($('#' + table_id).is('table')) {
+	var ele = document.getElementById(table_id);
+	if (ele.nodeName == "TABLE") {
 		var div_inner = ['<div id="selection_list"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#selection_list input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column Name</th></tr></thead><tbody>'];
-		$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
+		$.each(ele.rows[0].cells, function(index, v) {
 			div_inner.push('<tr>');
 			div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 			div_inner.push('</tr>');
 		});
-		div_inner.push('</tbody><button onclick="cExportExcel()">Save</button><input id="strFileName" type="text" placeholder="File Name"/></div>');
+		div_inner.push('</tbody><button onclick="cExportExcel(' + strFileName + ')">Save</button><input id="strFileName" type="text" placeholder="File Name"/></div>');
 		$.colorbox({
 			html : div_inner.join(''),
 			width : "50%",
@@ -44,11 +51,14 @@ function cExport(table_id, strFileName) {
 	}
 }
 
-function cExportExcel() {
+/**
+ *
+ */
+function cExportExcel(strFileName) {
+	console.log(strFileName);
+	return;
 	var table_id = 'tblId';
 	var fileName = $('#strFileName').val() || 'gs_report';
-	console.log(fileName);
-	return;
 	var all = [];
 	$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
 		all.push(index);
