@@ -66,10 +66,24 @@ function create() {
     $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
         all.push(index);
     });
-    var htmlData = $('#tblId').clone();
-    $.each($.find("#sortable li"), function(index, v) {
-        var ind = v.innerHTML.trim();
-        htmlData.find("tr th:eq(" + ind + "),tr td:eq(" + ind + ")").remove().end().html();
+
+    var rem = [];
+    $.each(all, function(allindex, allv) {
+        var exit = false;
+        $.each($.find("#sortable li"), function(index, v) {
+            var ind = v.innerHTML.trim();
+            if (allv == ind) {
+                exit = true;
+            }
+        });
+        if (!exit) {
+            rem.push(allv);
+        }
     });
-    console.log(htmlData.html());
+    var htmlData = $('#tblId').clone();
+    var l = rem.length;
+    for (var i = 0; i < l; i++) {
+        htmlData.find("tr th:eq(" + (rem[i] - i) + "),tr td:eq(" + (rem[i] - i) + ")").remove().end().html();
+    }
+    window.open('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent('<table>' + htmlData.html() + '</table>'));
 }
