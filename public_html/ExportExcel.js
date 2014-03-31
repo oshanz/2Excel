@@ -39,7 +39,7 @@ function cExport(table_id, strFileName) {
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 			div_inner.push('</tr>');
 		});
-		div_inner.push('</tbody><lable>File Name : </lable><input value="' + strFileName + '" id="strFileName" type="text" placeholder="File Name"/><button onclick="cExportExcel()">Save</button></div>');
+		div_inner.push('</tbody><lable>File Name : </lable><input value="' + strFileName + '" id="strFileName" type="text" placeholder="File Name"/><button onclick="cExportExcel(' + table_id + ')">Save</button></div>');
 		$.colorbox({
 			html : div_inner.join(''),
 			width : "50%",
@@ -54,11 +54,10 @@ function cExport(table_id, strFileName) {
 /**
  *
  */
-function cExportExcel() {
-	var table_id = 'tblId';
+function cExportExcel(tbl) {
 	var fileName = $('#strFileName').val() || 'gs_report';
 	var all = [];
-	$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
+	$.each(tbl.rows[0].cells, function(index, v) {
 		all.push(index);
 	});
 	var select = [];
@@ -66,7 +65,7 @@ function cExportExcel() {
 		select.push(parseInt(v.value));
 	});
 	var rem = $(all).not(select).get();
-	var htmlData = $('#' + table_id).clone();
+	var htmlData = $('#' + tbl.id).clone();
 	for (var i = 0; i < rem.length; i++) {
 		htmlData.find("tr th:eq(" + (rem[i] - i) + "),tr td:eq(" + (rem[i] - i) + ")").remove().end().html();
 	}
