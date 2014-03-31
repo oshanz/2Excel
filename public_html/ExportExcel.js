@@ -29,7 +29,7 @@ function ExportExcel(table, strFileName) {
 
 function getHeaders() {
     var div_out = document.createElement('div');
-//    div_out.setAttribute('hidden', 'true');
+    div_out.setAttribute('hidden', 'true');
     var div_inner = ['<div id="strFileName"><table border="1" width="100%"><thead><tr><th>',
         '<input type="button" onclick="$(' + "'#strFileName input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/>',
         '</th><th>Column</th></tr></thead><tbody>'];
@@ -43,7 +43,6 @@ function getHeaders() {
     div_out.innerHTML = div_inner.join('');
     document.body.appendChild(div_out);
     $('.inline').colorbox({inline: true, width: "50%"});
-
 }
 
 function  count() {
