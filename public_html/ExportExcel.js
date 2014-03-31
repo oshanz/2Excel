@@ -66,20 +66,11 @@ function create() {
     $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
         all.push(index);
     });
-
-    var rem = [];
-    $.each(all, function(allindex, allv) {
-        var exit = false;
-        $.each($.find("#sortable li"), function(index, v) {
-            var ind = v.innerHTML.trim();
-            if (allv == ind) {
-                exit = true;
-            }
-        });
-        if (!exit) {
-            rem.push(allv);
-        }
+    var select = [];
+    $.each($.find("#sortable li"), function(index, v) {
+        select = parseInt(v.innerHTML.trim());
     });
+    var rem = $(all).not(select).get();
     var htmlData = $('#tblId').clone();
     var l = rem.length;
     for (var i = 0; i < l; i++) {
