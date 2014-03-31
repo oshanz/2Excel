@@ -16,12 +16,6 @@ and open the template in the editor.
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script src="../lib/jquery.colorbox-min.js"></script>
         <script src="ExportExcel.js"></script>
-
-        <style>
-            #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-            #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
-            #sortable li span { position: absolute; margin-left: -1.3em; }
-        </style>
     </head>
     <body>
         <table id="tblId" style="background-color: aqua">
@@ -33,7 +27,7 @@ and open the template in the editor.
                     <th>
                         bd sdsd 
                     </th>
-                     <th>
+                    <th>
                         878 
                     </th>
                     <th>
@@ -61,6 +55,6 @@ and open the template in the editor.
         <button onclick="ExportExcel('tblId', 'a')">Export</button>
         <button onclick="getHeaders()">Head</button>
         <a class='inline' href="#strFileName">xda</a>
-
+        <button onclick="create()">Done</button>
     </body>
 </html>
