@@ -17,3 +17,5 @@ function count() {
 	$("#sortable").sortable();
 	$("#sortable").disableSelection();
 }
+var value;
+while(value = arr.pop()) { value + 1 }

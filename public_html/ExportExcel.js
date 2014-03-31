@@ -35,7 +35,7 @@ function cExport(table_id, strFileName) {
 		var div_inner = ['<div id="selection_list"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#selection_list input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column Name</th></tr></thead><tbody>'];
 		$.each(ele.rows[0].cells, function(index, v) {
 			div_inner.push('<tr>');
-			div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
+			div_inner.push('<td align="center"><input name="selection_column" type="checkbox" value="' + index + '")/></td>');
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 			div_inner.push('</tr>');
 		});
@@ -62,7 +62,7 @@ function cExportExcel() {
 		all.push(index);
 	});
 	var select = [];
-	$("#selection_list input[name=type]:checked").each(function(index, v) {
+	$("#selection_list input[name=selection_column]:checked").each(function(index, v) {
 		select.push(parseInt(v.value));
 	});
 	var rem = $(all).not(select).get();
