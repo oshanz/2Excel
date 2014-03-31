@@ -35,15 +35,21 @@ function getHeaders() {
         '</th><th>Column</th></tr></thead><tbody>'];
     $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
         div_inner.push('<tr>');
-        div_inner.push('<td align="center"><input type="checkbox" value="' + index + '")/></td>');
+        div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
         div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
         div_inner.push('</tr>');
     });
-    div_inner.push('</tbody></div>');
+    div_inner.push('</tbody><button onclick="count()">Next</button></div>');
     div_out.innerHTML = div_inner.join('');
     document.body.appendChild(div_out);
     $('.inline').colorbox({inline: true, width: "50%"});
-    
+
+}
+
+function  count() {
+    $.each($.find("input[name=type]:checked"), function(index, v) {
+        console.log(v.value);
+    });
 }
 
 //function getHeaders() {
