@@ -29,7 +29,7 @@ function ExportExcel(table, strFileName) {
 
 function getHeaders() {
     var div_out = document.createElement('div');
-    div_out.setAttribute('hidden', 'true');
+//    div_out.setAttribute('hidden', 'true');
     div_out.setAttribute('id', 'div_out');
     var div_inner = ['<div id="strFileName"><table border="1" width="100%"><thead><tr><th>',
         '<input type="button" onclick="$(' + "'#strFileName input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/>',
@@ -47,32 +47,16 @@ function getHeaders() {
 }
 
 function  count() {
-    var div_sort_out = document.createElement('<div>');
-    var div_sort = ['<div>'];
+    var div_sort_out = document.createElement('div');
+//    div_sort_out.setAttribute('hidden', 'true');
+    div_sort_out.setAttribute('id', 'div_sort_out');
+    var div_sort = ['<div><ul id="sortable">'];
     $.each($.find("input[name=type]:checked"), function(index, v) {
-        console.log(v.value);
+        div_sort.push('<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' + v.value + '</li>');
     });
-    div_sort.push('<div>');
+    div_sort.push('</ul><div>');
     div_sort_out.innerHTML = div_sort.join('');
+    document.body.appendChild(div_sort_out);
+    $("#sortable").sortable();
+    $("#sortable").disableSelection();
 }
-
-//function getHeaders() {
-//    var div_out = document.createElement('div');
-//    div_out.setAttribute('hidden', 'true');
-//    var div = document.createElement('div');
-//    div.setAttribute('id', 'strFileName');
-//    var ol = document.createElement('ol');
-//    ol.setAttribute('id', 'selectable');
-//    var li;
-//    $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
-//        li = document.createElement('li');
-//        li.innerHTML = v.innerHTML.trim();
-//        ol.appendChild(li);
-//    });
-//    div.appendChild(ol);
-//    div_out.appendChild(div);
-//    document.body.appendChild(div_out);
-//    $('.inline').colorbox({inline: true, width: "50%"});
-//
-////    $("#selectable").sortable();
-//}
