@@ -43,11 +43,6 @@ function getHeaders() {
     div_out.appendChild(div);
     document.body.appendChild(div_out);
     $('.inline').colorbox({inline: true, width: "50%"});
-    $("#selectable").selectable({
-        stop: function() {
-            $(".ui-selected", this).each(function() {
-                console.log($("#selectable li").index(this));
-            });
-        }
-    });
+
+//    $("#selectable").sortable();
 }
