@@ -38,7 +38,8 @@ function cExport(table_id) {
 		div_inner.push('</tbody><button onclick="cExportExcel()">Save</button></div>');
 		$.colorbox({
 			html : div_inner.join(''),
-			width : "50%"
+			width : "50%",
+			opacity : 0.60 
 		});
 	} else {
 		alert('Not a table');
@@ -65,4 +66,5 @@ function cExportExcel() {
 	a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent('<table>' + htmlData.html() + '</table>');
 	a.setAttribute('download', fileName + '_' + new Date().toLocaleString() + '.xlsx');
 	a.click();
+	$.colorbox.remove();
 }
