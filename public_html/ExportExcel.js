@@ -39,7 +39,7 @@ function cExport(table_id, strFileName) {
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 			div_inner.push('</tr>');
 		});
-		div_inner.push('</tbody><button onclick="cExportExcel(' + strFileName + ')">Save</button><input id="strFileName" type="text" placeholder="File Name"/></div>');
+		div_inner.push('</tbody><lable>File Name : </lable><input value="' + strFileName + '" id="strFileName" type="text" placeholder="File Name"/><button onclick="cExportExcel()">Save</button></div>');
 		$.colorbox({
 			html : div_inner.join(''),
 			width : "50%",
@@ -54,9 +54,7 @@ function cExport(table_id, strFileName) {
 /**
  *
  */
-function cExportExcel(strFileName) {
-	console.log(strFileName);
-	return;
+function cExportExcel() {
 	var table_id = 'tblId';
 	var fileName = $('#strFileName').val() || 'gs_report';
 	var all = [];
