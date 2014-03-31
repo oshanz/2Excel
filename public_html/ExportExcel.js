@@ -62,7 +62,14 @@ function  count() {
 }
 
 function create() {
-    $.each($.find("#sortable li"), function(index, v) {
-        console.log(v.innerHTML.trim());
+    var all = [];
+    $.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
+        all.push(index);
     });
+    var htmlData = $('#tblId').clone();
+    $.each($.find("#sortable li"), function(index, v) {
+        var ind = v.innerHTML.trim();
+        htmlData.find("tr th:eq(" + ind + "),tr td:eq(" + ind + ")").remove().end().html();
+    });
+    console.log(htmlData.html());
 }
