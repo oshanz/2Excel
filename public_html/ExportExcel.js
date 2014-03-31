@@ -13,8 +13,8 @@
  * @param {String} strFileName
  * @returns {Boolean}
  */
-function ExportExcel(table, strFileName) {
-	var ele = document.getElementById(table);
+function ExportExcel(table_id, strFileName) {
+	var ele = document.getElementById(table_id);
 	if (ele.nodeType === 1) {
 		var a = document.createElement('a');
 		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(ele.outerHTML);
@@ -27,32 +27,38 @@ function ExportExcel(table, strFileName) {
 	}
 }
 
-function cExport() {
-	var div_inner = ['<div id="strFileName"><table border="1" width="100%"><thead><tr><th>', '<input type="button" onclick="$(' + "'#strFileName input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/>', '</th><th>Column</th></tr></thead><tbody>'];
-	$.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
-		div_inner.push('<tr>');
-		div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
-		div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
-		div_inner.push('</tr>');
-	});
-	div_inner.push('</tbody><button onclick="cExportExcel()">Save</button></div>');
-	$.colorbox({
-		html : div_inner.join(''),
-		width : "50%"
-	});
+function cExport(table_id) {
+	var ele = document.getElementById(table_id);
+	if (ele.nodeType === 1) {
+		var div_inner = ['<div id="strFileName"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#strFileName input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column</th></tr></thead><tbody>'];
+		$.each(ele.rows[0].cells, function(index, v) {
+			div_inner.push('<tr>');
+			div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
+			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
+			div_inner.push('</tr>');
+		});
+		div_inner.push('</tbody><button onclick="cExportExcel()">Save</button></div>');
+		$.colorbox({
+			html : div_inner.join(''),
+			width : "50%"
+		});
+	} else {
+		alert('Not a table');
+	}
 }
 
 function cExportExcel() {
+	var table_id = 'tblId';
 	var all = [];
-	$.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
+	$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
 		all.push(index);
 	});
 	var select = [];
-	$.each($.find("input[name=type]:checked"), function(index, v) {
+	$.each($.find("#strFileName input[name=type]:checked"), function(index, v) {
 		select.push(parseInt(v.value));
 	});
 	var rem = $(all).not(select).get();
-	var htmlData = $('#tblId').clone();
+	var htmlData = $('#'+table_id).clone();
 	var l = rem.length;
 	for (var i = 0; i < l; i++) {
 		htmlData.find("tr th:eq(" + (rem[i] - i) + "),tr td:eq(" + (rem[i] - i) + ")").remove().end().html();

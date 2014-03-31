@@ -5,54 +5,42 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>2Excel</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" href="../lib/colorbox.css">
+	<head>
+		<title>2Excel</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="../lib/colorbox.css">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-        <script src="../lib/jquery.colorbox-min.js"></script>
-        <script src="ExportExcel.js"></script>
-    </head>
-    <body>
-        <table id="tblId" style="background-color: aqua" border="1">
-            <thead>
-                <tr>
-                    <th>
-                        a s d 
-                    </th>
-                    <th>
-                        bd sdsd 
-                    </th>
-                    <th>
-                        878 
-                    </th>
-                    <th>
-                        dth47 
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        282
-                    </td>
-                    <td>
-                        2482
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button onclick="ExportExcel('tblId', 'a')">Export All</button>
-        <button onclick="cExport()">Custom Export</button>
-    </body>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="../lib/jquery.colorbox-min.js"></script>
+		<script src="ExportExcel.js"></script>
+	</head>
+	<body>
+		<table id="tblId" style="background-color: aqua" border="1">
+			<thead>
+				<tr>
+					<th> a s d </th>
+					<th> bd sdsd </th>
+					<th> 878 </th>
+					<th> dth47 </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> 1 </td>
+					<td> 2 </td>
+					<td> 282 </td>
+					<td> 2482 </td>
+				</tr>
+			</tbody>
+		</table>
+		<button onclick="ExportExcel('tblId', 'a')">
+			Export All
+		</button>
+		<button onclick="cExport('tblId')">
+			Custom Export
+		</button>
+	</body>
 </html>
