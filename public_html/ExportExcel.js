@@ -14,9 +14,10 @@
  * @returns {Boolean}
  */
 function ExportExcel(table, strFileName) {
-    if (!table.nodeType) {
+    var ele = document.getElementById(table);
+    if (ele.nodeType === 1) {
         var a = document.createElement('a');
-        a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(document.getElementById(table).outerHTML);
+        a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(ele.outerHTML);
         a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
         a.click();
         return true;
