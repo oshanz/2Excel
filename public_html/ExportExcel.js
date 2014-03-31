@@ -62,7 +62,7 @@ function cExportExcel() {
 		all.push(index);
 	});
 	var select = [];
-	$.each($.find("#selection_list input[name=type]:checked"), function(index, v) {
+	$("#selection_list input[name=type]:checked").each(function(index, v) {
 		select.push(parseInt(v.value));
 	});
 	var rem = $(all).not(select).get();
