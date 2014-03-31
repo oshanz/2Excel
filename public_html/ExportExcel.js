@@ -20,10 +20,8 @@ function ExportExcel(table_id, strFileName) {
 		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(ele.outerHTML);
 		a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
 		a.click();
-		return true;
 	} else {
 		alert('Not a table');
-		return false;
 	}
 }
 
@@ -60,8 +58,7 @@ function cExportExcel() {
 	});
 	var rem = $(all).not(select).get();
 	var htmlData = $('#' + table_id).clone();
-	var l = rem.length;
-	for (var i = 0; i < l; i++) {
+	for (var i = 0; i < rem.length; i++) {
 		htmlData.find("tr th:eq(" + (rem[i] - i) + "),tr td:eq(" + (rem[i] - i) + ")").remove().end().html();
 	}
 	var a = document.createElement('a');
