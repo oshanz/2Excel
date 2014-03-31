@@ -27,7 +27,7 @@ function ExportExcel(table, strFileName) {
 	}
 }
 
-function getHeaders() {
+function cExport() {
 	var div_inner = ['<div id="strFileName"><table border="1" width="100%"><thead><tr><th>', '<input type="button" onclick="$(' + "'#strFileName input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/>', '</th><th>Column</th></tr></thead><tbody>'];
 	$.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
 		div_inner.push('<tr>');
@@ -35,14 +35,14 @@ function getHeaders() {
 		div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 		div_inner.push('</tr>');
 	});
-	div_inner.push('</tbody><button onclick="count()">Next</button></div>');
+	div_inner.push('</tbody><button onclick="cExportExcel()">Save</button></div>');
 	$.colorbox({
 		html : div_inner.join(''),
 		width : "50%"
 	});
 }
 
-function count() {
+function cExportExcel() {
 	var all = [];
 	$.each(document.getElementById('tblId').rows[0].cells, function(index, v) {
 		all.push(index);
