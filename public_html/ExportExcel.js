@@ -9,9 +9,8 @@
 
 /**
  *
- * @param {String} table id
+ * @param {String} table_id
  * @param {String} strFileName
- * @returns {Boolean}
  */
 function ExportExcel(table_id, strFileName) {
 	var ele = document.getElementById(table_id);
@@ -25,21 +24,22 @@ function ExportExcel(table_id, strFileName) {
 	}
 }
 
-function cExport(table_id) {
+function cExport(table_id, strFileName) {
 	var ele = document.getElementById(table_id);
 	if (ele.nodeType === 1) {
-		var div_inner = ['<div id="strFileName"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#strFileName input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column</th></tr></thead><tbody>'];
+		var div_inner = ['<div id="selection_list"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#selection_list input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column Name</th></tr></thead><tbody>'];
 		$.each(ele.rows[0].cells, function(index, v) {
 			div_inner.push('<tr>');
 			div_inner.push('<td align="center"><input name="type" type="checkbox" value="' + index + '")/></td>');
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 			div_inner.push('</tr>');
 		});
-		div_inner.push('</tbody><button onclick="cExportExcel()">Save</button></div>');
+		div_inner.push('</tbody><button onclick="cExportExcel()">Save</button><input id="strFileName" type="text" placeholder="File Name"/></div>');
 		$.colorbox({
 			html : div_inner.join(''),
 			width : "50%",
-			opacity : 0.60 
+			opacity : 0.50,
+			title : "Select Columns to Save"
 		});
 	} else {
 		alert('Not a table');
@@ -48,13 +48,15 @@ function cExport(table_id) {
 
 function cExportExcel() {
 	var table_id = 'tblId';
-	var fileName = 'ufhgv';
+	var fileName = $('#strFileName').val() || 'gs_report';
+	console.log(fileName);
+	return;
 	var all = [];
 	$.each(document.getElementById(table_id).rows[0].cells, function(index, v) {
 		all.push(index);
 	});
 	var select = [];
-	$.each($.find("#strFileName input[name=type]:checked"), function(index, v) {
+	$.each($.find("#selection_list input[name=type]:checked"), function(index, v) {
 		select.push(parseInt(v.value));
 	});
 	var rem = $(all).not(select).get();
