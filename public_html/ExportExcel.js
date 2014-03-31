@@ -52,7 +52,7 @@ function cExport(table_id, strFileName) {
 }
 
 /**
- *
+ *dont use this function
  */
 function cExportExcel(tbl) {
 	var fileName = $('#strFileName').val() || 'gs_report';
