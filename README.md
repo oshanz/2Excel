@@ -5,7 +5,7 @@ Customize HTML table dynamically and Export as Excel.
 
 ![ScreenShot](https://raw.githubusercontent.com/oshanz/2Excel/master/pic.jpg)
 
-***Examples***
+***Examples***   
 ExportExcel.js need jquery + jquery ui
 
 *Methods*
