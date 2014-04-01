@@ -59,12 +59,15 @@ function cExportExcel(table_id, strFileName) {
  */
 function rExportExcel(table_id, strFileName, rc_array) {
 	if (document.getElementById(table_id).nodeName == "TABLE") {
-		var htmlData = $('#' + table_id).clone();
+		var dom = $('#' + table_id).clone().get(0);
 		for (var i = 0; i < rc_array.length; i++) {
-			htmlData.find("tr th:eq(" + (rc_array[i] - i) + "),tr td:eq(" + (rc_array[i] - i) + ")").remove().end().html();
+			dom.tHead.rows[0].deleteCell((rc_array[i] - i));
+			for (var j = 0; j < dom.tBodies[0].rows.length; j++) {
+				dom.tBodies[0].rows[j].deleteCell((rc_array[i] - i));
+			}
 		}
 		var a = document.createElement('a');
-		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent('<table>' + htmlData.html() + '</table>');
+		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(dom.outerHTML);
 		a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
 		a.click();
 	} else {
@@ -85,14 +88,6 @@ function cExport(tbl) {
 	$("#selection_list input[name=selection_column]:checked").each(function(index, v) {
 		select.push(parseInt(v.value));
 	});
-	var rem = $(all).not(select).get();
-	var htmlData = $('#' + tbl.id).clone();
-	for (var i = 0; i < rem.length; i++) {
-		htmlData.find("tr th:eq(" + (rem[i] - i) + "),tr td:eq(" + (rem[i] - i) + ")").remove().end().html();
-	}
-	var a = document.createElement('a');
-	a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent('<table>' + htmlData.html() + '</table>');
-	a.setAttribute('download', fileName + '_' + new Date().toLocaleString() + '.xlsx');
-	a.click();
 	$.colorbox.remove();
+	rExportExcel('tblId', fileName, $(all).not(select).get());
 }
