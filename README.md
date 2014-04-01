@@ -3,6 +3,8 @@
 
 Customize HTML table dynamically and Export as Excel.
 
+![ScreenShot](https://raw.githubusercontent.com/oshanz/2Excel/master/pic.jpg)
+
 ***Examples***
 
 import colorbox.css with /images + jquery.colorbo-min.js
@@ -19,5 +21,3 @@ function rExportExcel(table_id, strFileName, rc_array)
 
 3. export as user want   
 function cExportExcel(table_id, strFileName)
-
-![ScreenShot](https://raw.githubusercontent.com/oshanz/2Excel/master/pic.jpg)
