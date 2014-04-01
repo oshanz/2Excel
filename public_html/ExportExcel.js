@@ -39,7 +39,7 @@ function cExportExcel(table_id, strFileName) {
 			div_inner.push('<td align="center">' + v.innerHTML.trim() + '</td>');
 			div_inner.push('</tr>');
 		});
-		div_inner.push('</tbody><lable>File Name : </lable><input value="' + strFileName + '" id="strFileName" type="text" placeholder="File Name"/><button onclick="cExport(' + table_id + ')">Save</button></div>');
+		div_inner.push('</tbody><lable>File Name : </lable><input value="' + strFileName + '" id="strFileName" type="text" placeholder="File Name"/><button onclick="cExport(' + "'" + table_id + "'" + ')">Save</button></div>');
 		$.colorbox({
 			html : div_inner.join(''),
 			width : "50%",
@@ -78,8 +78,7 @@ function rExportExcel(table_id, strFileName, rc_array) {
 /**
  *dont use this function
  */
-function cExport(tbl) {
-	var fileName = $('#strFileName').val() || 'gs_report';
+function cExport(table_id) {
 	var all = [];
 	$.each(tbl.rows[0].cells, function(index, v) {
 		all.push(index);
@@ -88,6 +87,6 @@ function cExport(tbl) {
 	$("#selection_list input[name=selection_column]:checked").each(function(index, v) {
 		select.push(parseInt(v.value));
 	});
+	rExportExcel(table_id, $('#strFileName').val() || 'gs_report', $(all).not(select).get());
 	$.colorbox.remove();
-	rExportExcel('tblId', fileName, $(all).not(select).get());
 }
