@@ -3,8 +3,7 @@
 
 Customize HTML table dynamically and Export as Excel.
 
-How
-===
+***Examples***
 
 import colorbox.css with /images + jquery.colorbo-min.js
 need jquery + jquery ui
