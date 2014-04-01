@@ -29,7 +29,7 @@ function ExportExcel(table_id, strFileName) {
  * @param {String} table_id
  * @param {String} strFileName
  */
-function cExport(table_id, strFileName) {
+function cExportExcel(table_id, strFileName) {
 	var ele = document.getElementById(table_id);
 	if (ele.nodeName == "TABLE") {
 		var div_inner = ['<div id="selection_list"><table border="1" width="100%"><thead><tr><th><input type="button" onclick="$(' + "'#selection_list input:checkbox'" + ').prop(' + "'checked'" + ', true);" value="Select All"/></th><th>Column Name</th></tr></thead><tbody>'];
@@ -53,6 +53,9 @@ function cExport(table_id, strFileName) {
 
 /**
  *
+ * @param {String} table_id
+ * @param {String} strFileName
+ * @param {Array} rc_array ,table column index to remove ex:- [0,3]
  */
 function rExportExcel(table_id, strFileName, rc_array) {
 	if (document.getElementById(table_id).nodeName == "TABLE") {
