@@ -17,32 +17,58 @@
 		<script src="ExportExcel.js"></script>
 	</head>
 	<body>
-		<table id="tblId" style="background-color: aqua" border="1">
+		<table id="tblId" border="1">
 			<thead>
 				<tr>
-					<th> a s d </th>
-					<th> bd sdsd </th>
-					<th> 878 </th>
-					<th> dth47 </th>
+					<th> Order id </th>
+					<th> Rep </th>
+					<th> Outlet </th>
+					<th> Amount </th>
+					<th> View </th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td> 1 </td>
-					<td> 2 </td>
-					<td> 282 </td>
+					<td> Nuwan </td>
+					<td> Agro </td>
 					<td> 2482 </td>
+					<td>
+					<button>
+						View
+					</button></td>
+				</tr>
+				<tr>
+					<td> 2 </td>
+					<td> Hazeem </td>
+					<td> Agro </td>
+					<td> 7264 </td>
+					<td>
+					<button>
+						View
+					</button></td>
+				</tr>
+				<tr>
+					<td> 3 </td>
+					<td> Nuwan </td>
+					<td> Bio </td>
+					<td> 9423 </td>
+					<td>
+					<button>
+						View
+					</button></td>
 				</tr>
 			</tbody>
 		</table>
+		<br>
 		<button onclick="ExportExcel('tblId', 'a')">
 			Export All
 		</button>
+		<button onclick="rExportExcel('tblId','a',[4])">
+			r Export
+		</button>
 		<button onclick="cExportExcel('tblId','a')">
 			Custom Export
-		</button>
-		<button onclick="rExportExcel('tblId','a',[2])">
-			r Export
 		</button>
 	</body>
 </html>
