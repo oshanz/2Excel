@@ -52,6 +52,24 @@ function cExport(table_id, strFileName) {
 }
 
 /**
+ *
+ */
+function rExportExcel(table_id, strFileName, rc_array) {
+	if (document.getElementById(table_id).nodeName == "TABLE") {
+		var htmlData = $('#' + table_id).clone();
+		for (var i = 0; i < rc_array.length; i++) {
+			htmlData.find("tr th:eq(" + (rc_array[i] - i) + "),tr td:eq(" + (rc_array[i] - i) + ")").remove().end().html();
+		}
+		var a = document.createElement('a');
+		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent('<table>' + htmlData.html() + '</table>');
+		a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
+		a.click();
+	} else {
+		alert('Not a table');
+	}
+}
+
+/**
  *dont use this function
  */
 function cExportExcel(tbl) {
