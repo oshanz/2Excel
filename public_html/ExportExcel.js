@@ -56,7 +56,7 @@ function cExportExcel(table_id, strFileName) {
  */
 function cExport(table_id) {
 	var all = [];
-	$.each(tbl.rows[0].cells, function(index, v) {
+	$.each(document.getElementById(table_id).tHead.rows[0].cells, function(index, v) {
 		all.push(index);
 	});
 	var select = [];
