@@ -20,4 +20,4 @@ function rExportExcel(table_id, strFileName, rc_array)
 3. export as user want   
 function cExportExcel(table_id, strFileName)
 
-![ScreenShot](https://raw.github.com/oshanz/gnome-shell-fuzzy-clock/master/img/)
+![ScreenShot](http://raw.githubusercontent.com/oshanz/2Excel/master/pic.jpg)
