@@ -52,6 +52,22 @@ function cExportExcel(table_id, strFileName) {
 }
 
 /**
+ *dont use this function
+ */
+function cExport(table_id) {
+	var all = [];
+	$.each(tbl.rows[0].cells, function(index, v) {
+		all.push(index);
+	});
+	var select = [];
+	$("#selection_list input[name=selection_column]:checked").each(function(index, v) {
+		select.push(parseInt(v.value));
+	});
+	rExportExcel(table_id, $('#strFileName').val() || 'gs_report', $(all).not(select).get());
+	$.colorbox.remove();
+}
+
+/**
  *
  * @param {String} table_id
  * @param {String} strFileName
@@ -66,27 +82,18 @@ function rExportExcel(table_id, strFileName, rc_array) {
 				dom.tBodies[0].rows[j].deleteCell((rc_array[i] - i));
 			}
 		}
-		var a = document.createElement('a');
-		a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(dom.outerHTML);
-		a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
-		a.click();
+		strExportExcel(dom.outerHTML, strFileName);
 	} else {
 		alert('Not a table');
 	}
 }
 
 /**
- *dont use this function
+ *
  */
-function cExport(table_id) {
-	var all = [];
-	$.each(tbl.rows[0].cells, function(index, v) {
-		all.push(index);
-	});
-	var select = [];
-	$("#selection_list input[name=selection_column]:checked").each(function(index, v) {
-		select.push(parseInt(v.value));
-	});
-	rExportExcel(table_id, $('#strFileName').val() || 'gs_report', $(all).not(select).get());
-	$.colorbox.remove();
+function strExportExcel(strTable, strFileName) {
+	var a = document.createElement('a');
+	a.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,' + encodeURIComponent(strTable);
+	a.setAttribute('download', strFileName + '_' + new Date().toLocaleString() + '.xlsx');
+	a.click();
 }
