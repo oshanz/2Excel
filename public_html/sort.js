@@ -19,3 +19,5 @@ function count() {
 }
 var value;
 while(value = arr.pop()) { value + 1 }
+
+//var tds = document.querySelectorAll('#firstTable tbody td');
