@@ -77,9 +77,23 @@ function rExportExcel(table_id, strFileName, rc_array) {
 	if (document.getElementById(table_id).nodeName == "TABLE") {
 		var dom = $('#' + table_id).clone().get(0);
 		for (var i = 0; i < rc_array.length; i++) {
-			dom.tHead.rows[0].deleteCell((rc_array[i] - i));
-			for (var j = 0; j < dom.tBodies[0].rows.length; j++) {
-				dom.tBodies[0].rows[j].deleteCell((rc_array[i] - i));
+			//remove column from thead
+			for (var k = 0; k < dom.tHead.length; k++) {
+				for (var j = 0; j < dom.tHead[k].rows.length; j++) {
+					dom.tHead[k].rows[j].deleteCell((rc_array[i] - i));
+				}
+			}
+			//remove column from tbody
+			for (var k = 0; k < dom.tBodies.length; k++) {
+				for (var j = 0; j < dom.tBodies[k].rows.length; j++) {
+					dom.tBodies[k].rows[j].deleteCell((rc_array[i] - i));
+				}
+			}
+			//remove column from tfoot
+			for (var k = 0; k < dom.tFoot.length; k++) {
+				for (var j = 0; j < dom.tFoot[k].rows.length; j++) {
+					dom.tFoot[k].rows[j].deleteCell((rc_array[i] - i));
+				}
 			}
 		}
 		strExportExcel(dom.outerHTML, strFileName);
